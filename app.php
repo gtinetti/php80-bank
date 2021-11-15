@@ -7,8 +7,8 @@ require_once "src/Model/Person.php";
 
 $agency  = new Agency("2244", "1");
 
-$gabriel = new Person("450.303.548-75", "Gabriel", "Tinetti");
-$alice   = new Person("403.231.231-33", "Alice", "Doe");
+$gabriel = new Person("509.408.270-18", "Gabriel", "Tinetti");
+$alice   = new Person("559.428.800-77", "Alice", "Doe");
 
 $accGabriel = new Account("193238", "1", 0.0, $agency, $gabriel);
 $accAlice   = new Account("222232", "1", 0.0, $agency, $alice);

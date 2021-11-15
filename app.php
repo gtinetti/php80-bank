@@ -1,21 +1,25 @@
 <?php
 
-require_once "src/Util.php";
-require_once "src/Model/Account.php";
-require_once "src/Model/Agency.php";
-require_once "src/Model/Person.php";
+require_once "vendor/autoload.php";
 
-$agency  = new Agency("2244", "1");
+use App\Model\Account;
+use App\Model\Person;
+use App\Model\Agency;
 
-$gabriel = new Person("509.408.270-18", "Gabriel", "Tinetti");
-$alice   = new Person("559.428.800-77", "Alice", "Doe");
+$agency = new Agency("2244", "1");
 
-$accGabriel = new Account("193238", "1", 0.0, $agency, $gabriel);
-$accAlice   = new Account("222232", "1", 0.0, $agency, $alice);
+$john = new Person("50940827018", "John", "Doe");
+$xpto = new Person("55942880077", "Xpto", "Doe");
 
-$accGabriel->deposit(2321);
+$accJohn = new Account("193238", "1", 0.0, $agency, $john);
+$accXpto = new Account("222232", "1", 0.0, $agency, $xpto);
 
-$accAlice->deposit(1000);
-$accAlice->transfer(900, $accGabriel);
+$accJohn->deposit(2321.1);
 
-var_dump($accGabriel->getBalance(), $accAlice->getBalance());
+$accXpto->deposit(1000.3);
+$accXpto->transfer(1000, $accJohn);
+
+var_dump(
+    $accJohn->getBalance(),
+    $accXpto->getBalance()
+);

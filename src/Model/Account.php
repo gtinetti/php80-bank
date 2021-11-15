@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Model;
+
+use \App\Exceptions\BalanceException;
+
 class Account
 {
     public function __construct(
@@ -7,7 +11,7 @@ class Account
         private string $digit,
         private float $balance,
         private Agency $agency,
-        private Person $person
+        private Person $person,
     ) {}
 
     public function getPerson(): Person
@@ -34,7 +38,7 @@ class Account
     public function withdraw(float|int $amount): bool
     {
         if ($this->balance - $amount <= 0) {
-            return false;
+            throw new BalanceException("Insufficient funds");
         }
 
         $this->balance -= $amount;
@@ -43,8 +47,8 @@ class Account
 
     public function transfer(float|int $amount, Account $to): bool
     {
-        $to->deposit($amount);
         $this->withdraw($amount);
+        $to->deposit($amount);
 
         return true;
     }

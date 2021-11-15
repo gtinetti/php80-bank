@@ -1,17 +1,22 @@
 <?php
 
+namespace App\Model;
+
 class Person
 {
     private string $document;
     private string $firstName;
     private string $lastName;
 
-    public function __construct(string $document, string $firstName, string $lastName)
-    {
+    public function __construct(
+        string $document,
+        string $firstName,
+        string $lastName,
+    ) {
         $this->document  = $this->__formatDoc($document);
 
         [$firstName, $lastName] = array_map(
-            fn($arg) => Util::sanitize($arg),
+            fn($arg) => \App\Util::sanitize($arg),
             [$firstName, $lastName]
         );
 
@@ -46,7 +51,7 @@ class Person
             return $document;
         }
 
-        $normalized = Util::sanitize($document);
+        $normalized = \App\Util::sanitize($document);
 
         return $this->__glueDocNum($this->__splitDocNum($normalized));
     }

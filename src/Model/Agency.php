@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 class Agency
 {
     private string $number;
@@ -8,7 +10,7 @@ class Agency
     public function __construct(string $number, string $digit)
     {
         [$number, $digit] = array_map(
-            fn($arg) => Util::sanitize($arg),
+            fn($arg) => \App\Util::sanitize($arg),
             [$number, $digit]
         );
 

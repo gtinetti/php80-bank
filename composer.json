@@ -1,0 +1,16 @@
+{
+    "name": "gtinetti/php-study",
+    "authors": [
+        {
+            "name": "Gabriel Tinetti",
+            "email": "tinetti.gabriel@pm.me"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
